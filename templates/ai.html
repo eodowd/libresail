@@ -1,73 +1,428 @@
-<style>
- .form-control:focus {
-  border-color: #dc3545!important;
-  box-shadow: none!important;
-}
-  .bg-dark-col {
-  background-color: #333 !important
-  }
-  body {
-  padding:0;
-  background-color: #393939 !important;
-  }
-  .navbar {
-  background-color: #393939 !important;
-  }
-.search-input {
-    height: 50px;
-    border-radius: 50px!important;
-
-    padding-left: 50px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #333!important;
-    color: white!important;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-  .navbar {
-display: flex;
-  }
-  .top-10 {
-  padding-top:20px!important;
-  }
-
-
-
-
-</style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<nav class="navbar fixed-top  top-10 navbar-light text-light bg-dark-col px-4 shadow-sm">
-  <div class="container-fluid ">
-
-      <form class="d-flex ms-auto me-auto w-100" action="{{ url_for('home')}}" method="post">
-    <span class="navbar-brand">
-      <h2 href="" class="text-light"><svg fill="#ffffff" height="32px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-255.93, -255.93), scale(63.355)" fill="#dc3545" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="7.025452"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path> </g> </g> <g> <g> <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path> </g> </g> <g> <g> <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path> </g> </g> </g></svg>
-<strong class="text-danger">libre</strong>sail</h2></span>
-
-        <input type="text" id="search_term" class="form-control search-input" value="{{sr}}" name="search_term">
-
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibreSail - AI Chat</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Add Markdown parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Add KaTeX for faster math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <style>
+    :root {
+      --bg-color: #171717;
+      --card-color: #222222;
+      --accent-color: #ff2975;
+      --ai-color: #6d28d9;
+      --text-color: #ffffff;
+      --secondary-text: #b3b3b3;
+    }
+    
+    body {
+      padding: 0;
+      background-color: var(--bg-color) !important;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .navbar {
+      background-color: var(--card-color) !important;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 15px rgba(255, 41, 117, 0.4) !important;
+    }
+    
+    .search-input {
+      height: 50px;
+      border-radius: 100px !important;
+      padding-left: 50px;
+      padding-right: 20px;
+      border: 2px solid var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color) !important;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:hover {
+      transform: scale(1.01);
+    }
+    
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+    }
+    
+    .card {
+      background-color: var(--card-color) !important;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    
+    .card-header {
+      background: linear-gradient(90deg, var(--accent-color), var(--ai-color)) !important;
+      color: var(--text-color) !important;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(255, 41, 117, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .card-body {
+      background-color: var(--card-color) !important;
+      color: var(--secondary-text) !important;
+      padding: 25px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    
+    /* Markdown styling */
+    .markdown-content h1, 
+    .markdown-content h2, 
+    .markdown-content h3, 
+    .markdown-content h4, 
+    .markdown-content h5, 
+    .markdown-content h6 {
+      color: var(--text-color);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .markdown-content p {
+      margin-bottom: 1rem;
+    }
+    
+    .markdown-content ul, 
+    .markdown-content ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    
+    .markdown-content blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding-left: 1rem;
+      margin-left: 0;
+      font-style: italic;
+    }
+    
+    .markdown-content code {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    
+    .markdown-content pre {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    
+    .markdown-content pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .markdown-content a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    
+    .markdown-content a:hover {
+      text-decoration: underline;
+    }
+    
+    .markdown-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+    
+    .markdown-content th, 
+    .markdown-content td {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.5rem;
+    }
+    
+    .markdown-content th {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Math styling */
+    .katex {
+      color: var(--text-color);
+    }
+    
+    /* Highlight important terms */
+    .term {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .sail-text {
+      background: linear-gradient(to right, #3ad6fd, #c071fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .top-10 {
+      padding-top: 15px !important;
+    }
+    
+    /* Bubble background pattern */
+    .bubble-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--accent-color), var(--ai-color));
+      opacity: 0.07;
+      animation: float 30s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(200px, -200px) rotate(360deg);
+      }
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff4585;
+    }
+    
+    /* Highlight text */
+    ::selection {
+      background-color: var(--accent-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble-bg" id="bubble-background"></div>
+  
+  <nav class="navbar fixed-top top-10 navbar-light text-light px-4">
+    <div class="container-fluid">
+      <form class="d-flex align-items-center w-100" action="{{ url_for('home') }}" method="post">
+        <a href="/" class="navbar-brand me-3">
+          <h2 class="text-light logo-text mb-0 d-flex align-items-center">
+            <svg fill="var(--accent-color)" height="32px" width="32px" class="me-2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path>
+                </g>
+              </g>
+            </svg>
+            <span style="color: var(--accent-color)">libre</span><span class="sail-text">sail</span>
+          </h2>
+        </a>
+        <div class="position-relative flex-grow-1">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search_term" class="form-control search-input" value="{{search_term}}" name="search_term" placeholder="Search the web or ask AI anything...">
+        </div>
+      </form>
     </div>
-  </form>
-
-  </div>
-</nav>
-<div class="py-4 px-4">
-  <div class="py-4"></div>
+  </nav>
+  
+  <div class="py-4 px-4">
     <div class="py-4"></div>
-
-<div class="card shadow-sm bg-dark-col mb-3 " style="max-width: 100%;">
-  <div class="card-header text-white ">Answer</div>
-  <div class="card-body bg-dark-col text-secondary">
-    <p class="card-text">{{resultsCHAT}}</p>
+    <div class="py-4"></div>
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-robot me-2" style="color: var(--accent-color); font-size: 1.5rem;"></i>
+            <h4 class="mb-0">AI Response to: <span style="color: var(--accent-color)">{{search_term[3:]}}</span></h4>
+          </div>
+          
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-sparkles me-2"></i> AI Response
+            </div>
+            <div class="card-body markdown-content" id="ai-response">
+              <!-- Content will be rendered here via JavaScript -->
+              <div id="loading-indicator" class="text-center">
+                <div class="spinner-border text-accent" role="status" style="color: var(--accent-color);">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="mt-2">Formatting response...</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center mt-4">
+            <p class="text-muted">Powered by Claude-3-haiku via DuckDuckGo</p>
+            <div class="d-flex justify-content-center gap-3 mt-3">
+              <a href="/" class="btn btn-outline-light"><i class="fas fa-home me-2"></i> Home</a>
+              <button class="btn btn-outline-light" id="copy-btn"><i class="fas fa-copy me-2"></i> Copy Response</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-</div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Store the raw response
+      const rawResponse = `{{resultsCHAT}}`;
+      const aiResponse = document.getElementById('ai-response');
+      const loadingIndicator = document.getElementById('loading-indicator');
+      
+      // Create bubble background
+      const bubbleBackground = document.getElementById('bubble-background');
+      for (let i = 0; i < 15; i++) {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble');
+        
+        // Random size
+        const size = Math.random() * 300 + 50;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        
+        // Random position
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation duration and delay
+        const duration = Math.random() * 30 + 20;
+        const delay = Math.random() * -30;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDelay = `${delay}s`;
+        
+        bubbleBackground.appendChild(bubble);
+      }
+      
+      // Function to fix all the math notation patterns
+      function processText(text) {
+        // Clean the text to handle various LaTeX-like notations
+        let processedText = text;
+        
+        // Replace $\text{Term}$ patterns
+        processedText = processedText.replace(/\$\\text\{([^}]+)\}\$/g, '<span class="term">$1</span>');
+        
+        // Replace $ ext{Term}$ patterns (missing backslash)
+        processedText = processedText.replace(/\$ ext\{([^}]+)\}\$/g, '<span class="term">$1</span>');
+        
+        // Replace any remaining $term$ patterns 
+        processedText = processedText.replace(/\$([^$]+)\$/g, '<span class="term">$1</span>');
+        
+        return processedText;
+      }
+      
+      // Process the text and replace LaTeX-like notations with styled spans
+      const processedText = processText(rawResponse);
+      
+      // First step: remove the loading indicator
+      setTimeout(() => {
+        // Render markdown
+        aiResponse.innerHTML = marked.parse(processedText);
+        
+        // If using KaTeX, initialize it
+        if (typeof renderMathInElement === 'function') {
+          renderMathInElement(aiResponse, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+            ],
+            throwOnError: false
+          });
+        }
+      }, 300);
+      
+      // Copy button functionality
+      const copyBtn = document.getElementById('copy-btn');
+      copyBtn.addEventListener('click', () => {
+        // Get the text without HTML tags for copying
+        const textToCopy = aiResponse.textContent || aiResponse.innerText;
+        navigator.clipboard.writeText(textToCopy);
+        
+        copyBtn.innerHTML = '<i class="fas fa-check me-2"></i> Copied!';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fas fa-copy me-2"></i> Copy Response';
+        }, 2000);
+      });
+      
+      // Focus search input when / is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          document.querySelector('.search-input').focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

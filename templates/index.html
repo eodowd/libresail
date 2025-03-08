@@ -1,48 +1,241 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<style>
-     .form-control:focus {
-  border-color: #dc3545!important;
-  box-shadow: none!important;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibreSail - Free Web Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #171717;
+      --card-color: #222222;
+      --accent-color: #ff2975;
+      --text-color: #ffffff;
+      --secondary-text: #b3b3b3;
+    }
+    
     body {
-  background-color: #393939 !important;
-  }
+      background-color: var(--bg-color) !important;
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 15px rgba(255, 41, 117, 0.4) !important;
+    }
+    
     .search-container {
-    position: relative;
-    margin-top: 50%;
-    color: white;
-}
-
-.search-input {
-    height: 50px;
-    border-radius: 50px;
-    padding-left: 35px;
-    border: solid 1px white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: white!important;
-    background-color: #938e8e87 !important;
-
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: white;
-}
-</style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="search-container text-center">
-          <svg fill="#ffffff" height="128px" width="128px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-255.93, -255.93), scale(63.355)" fill="#dc3545" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="7.025452"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path> </g> </g> <g> <g> <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path> </g> </g> <g> <g> <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path> </g> </g> </g></svg>
-          <h1 class="text-center text-white py-4"><strong class="text-danger">libre</strong>sail</h1>
-          <form action="{{ url_for('home')}}" method="post" class="">
-        <input type="text" name="search_term" class="form-control search-input" placeholder="Search...">
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .search-input {
+      height: 60px;
+      border-radius: 100px !important;
+      padding-left: 60px;
+      padding-right: 20px;
+      border: 2px solid var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color) !important;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:hover {
+      transform: scale(1.01);
+      box-shadow: 0 0 20px rgba(255, 41, 117, 0.3);
+    }
+    
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+      font-size: 1.5rem;
+    }
+    
+    .logo-glow {
+      filter: drop-shadow(0 0 15px rgba(255, 41, 117, 0.7));
+      transition: all 0.3s ease;
+    }
+    
+    .logo-glow:hover {
+      filter: drop-shadow(0 0 25px rgba(255, 41, 117, 0.9));
+      transform: scale(1.05);
+    }
+    
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .sail-text {
+      background: linear-gradient(to right, #3ad6fd, #c071fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .shortcuts {
+      margin-top: 40px;
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+    }
+    
+    .shortcut-badge {
+      background-color: rgba(255, 41, 117, 0.2);
+      color: var(--accent-color);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin: 0 5px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+    
+    .shortcut-badge:hover {
+      background-color: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .floating-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: linear-gradient(90deg, var(--accent-color), #9333ea);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-particles" id="particles"></div>
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="search-container text-center">
+          <svg class="logo-glow" fill="#ff2975" height="150px" width="150px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve">
+            <g>
+              <g>
+                <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path>
+              </g>
+            </g>
+            <g>
+              <g>
+                <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path>
+              </g>
+            </g>
+          </svg>
+          
+          <h1 class="text-center text-white logo-text">
+            <span class="text-accent" style="color: var(--accent-color)">libre</span><span class="sail-text">sail</span>
+          </h1>
+          
+          <form action="{{ url_for('home') }}" method="post" class="position-relative">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" name="search_term" class="form-control search-input" placeholder="Search the web...">
           </form>
+          
+          <div class="shortcuts">
+            <p>Try using prefixes for special searches:</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+              <span class="shortcut-badge">ai|your question</span>
+              <span class="shortcut-badge">news|topic</span>
+              <span class="shortcut-badge">image|search</span>
+              <span class="shortcut-badge">video|search</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <script>
+    // Create floating particles
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 15;
+    
+    for (let i = 0; i < particleCount; i++) {
+      createParticle();
+    }
+    
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Random size between 5px and 20px
+      const size = Math.random() * 15 + 5;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random position
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100}vh`;
+      
+      // Random animation duration and delay
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 5;
+      particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
+      
+      particlesContainer.appendChild(particle);
+    }
+    
+    // Add keydown event listener to focus search input when / is pressed
+    document.addEventListener('keydown', function(e) {
+      if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.querySelector('.search-input').focus();
+      }
+    });
+  </script>
+  
+  <style>
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      25% {
+        transform: translate(100px, 100px) rotate(90deg) scale(1.1);
+      }
+      50% {
+        transform: translate(200px, 50px) rotate(180deg) scale(1);
+      }
+      75% {
+        transform: translate(100px, -50px) rotate(270deg) scale(0.9);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg) scale(1);
+      }
+    }
+  </style>
+</body>
+</html>

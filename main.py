@@ -16,18 +16,17 @@ def home():
        if search_term[:6] == "image|":
            resultsimages = DDGS().images(search_term, max_results=200)
            return render_template("images.html",resultsimages=resultsimages,search_term=search_term)
-           #return resultsimages
        if search_term[:6] == "video|":
            resultsvid = DDGS().videos(search_term, max_results=10)
            return render_template("video.html",resultsvid=resultsvid,search_term=search_term)
-          # return resultsvid
        return redirect("/"+search_term)
     return render_template("index.html")
 
 @app.route('/<search_term>')
 def search(search_term):
     results = DDGS().text(search_term, region='wt-wt', max_results=25)
-    sr= search_term
+    sr = search_term
     return render_template("results.html", results=results, sr=sr)
 
-
+if __name__ == '__main__':
+    app.run(debug=True)

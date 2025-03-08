@@ -1,69 +1,339 @@
-<style>
-     .form-control:focus {
-  border-color: #dc3545!important;
-  box-shadow: none!important;
-}
-    .bg-dark-col {
-  background-color: #333 !important
-  }
-  body {
-  background-color: #393939 !important;
-  }
-  .navbar {
-  background-color: #393939 !important;
-  }
-.search-input {
-    height: 50px;
-    border-radius: 100px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #333!important;
-    color: white!important;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-  .navbar {
-display: flex;
-  }
-  .top-10 {
-  padding-top:20px!important;
-  }
-
-</style>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<nav class="navbar fixed-top  top-10 navbar-light text-light bg-dark-col px-4 shadow-sm">
-  <div class="container-fluid ">
-
-      <form class="d-flex ms-auto me-auto w-100" action="{{ url_for('home')}}" method="post">
-    <span class="navbar-brand">
-      <h2 href="" class="text-light"><svg fill="#ffffff" height="32px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-255.93, -255.93), scale(63.355)" fill="#dc3545" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="7.025452"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path> </g> </g> <g> <g> <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path> </g> </g> <g> <g> <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path> </g> </g> </g></svg>
-<strong class="text-danger">libre</strong>sail</h2></span>
-
-        <input type="text" id="search_term" class="form-control search-input" value="{{sr}}" name="search_term">
-
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibreSail - News Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #171717;
+      --card-color: #222222;
+      --accent-color: #ff2975;
+      --news-accent: #00d2ff;
+      --text-color: #ffffff;
+      --secondary-text: #b3b3b3;
+    }
+    
+    body {
+      padding: 0;
+      background-color: var(--bg-color) !important;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .navbar {
+      background-color: var(--card-color) !important;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 15px rgba(255, 41, 117, 0.4) !important;
+    }
+    
+    .search-input {
+      height: 50px;
+      border-radius: 100px !important;
+      padding-left: 50px;
+      padding-right: 20px;
+      border: 2px solid var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color) !important;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:hover {
+      transform: scale(1.01);
+    }
+    
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+    }
+    
+    .card {
+      background-color: var(--card-color) !important;
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card-header {
+      background-color: rgba(0, 210, 255, 0.1) !important;
+      color: var(--news-accent) !important;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .card-body {
+      background-color: var(--card-color) !important;
+      color: var(--secondary-text) !important;
+      padding: 20px;
+    }
+    
+    .card-title {
+      color: var(--news-accent) !important;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 10px;
+      word-break: break-all;
+    }
+    
+    .card-title:hover {
+      text-decoration: underline;
+    }
+    
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .sail-text {
+      background: linear-gradient(to right, #3ad6fd, #c071fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .top-10 {
+      padding-top: 15px !important;
+    }
+    
+    .news-tag {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent-color), var(--news-accent));
+      color: white;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    
+    /* News category tabs */
+    .category-tabs {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .category-tab {
+      background-color: var(--card-color);
+      color: var(--secondary-text);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .category-tab:hover, .category-tab.active {
+      background-color: var(--news-accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* News feed animation */
+    .news-feed-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s forwards;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Loading animation */
+    .news-skeleton {
+      background: linear-gradient(90deg, var(--card-color), rgba(60, 60, 60, 0.5), var(--card-color));
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 10px;
+      height: 24px;
+      margin-bottom: 10px;
+    }
+    
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff4585;
+    }
+    
+    /* Highlight text */
+    ::selection {
+      background-color: var(--accent-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar fixed-top top-10 navbar-light text-light px-4">
+    <div class="container-fluid">
+      <form class="d-flex align-items-center w-100" action="{{ url_for('home') }}" method="post">
+        <a href="/" class="navbar-brand me-3">
+          <h2 class="text-light logo-text mb-0 d-flex align-items-center">
+            <svg fill="var(--accent-color)" height="32px" width="32px" class="me-2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533-36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path>
+                </g>
+              </g>
+            </svg>
+            <span style="color: var(--accent-color)">libre</span><span class="sail-text">sail</span>
+          </h2>
+        </a>
+        <div class="position-relative flex-grow-1">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search_term" class="form-control search-input" value="{{search_term}}" name="search_term" placeholder="Search for news...">
+        </div>
+      </form>
     </div>
-  </form>
-
-  </div>
-</nav>
-<div class="py-4 px-4">
-  <div class="py-4"></div>
+  </nav>
+  
+  <div class="py-4 px-4">
     <div class="py-4"></div>
-{% for i in resultsnews %}
-<div class="card shadow-sm bg-dark-col mb-3 " style="max-width: 100%;">
-  <div class="card-header text-white">{{i['date']}}</div>
-  <div class="card-body bg-dark-col text-secondary">
-    <a href="{{i['url']}}" class="card-title">{{i['url']}}</a>
-    <p class="card-text">{{i['body']}}</p>
+    <div class="py-4"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-newspaper me-2" style="color: var(--news-accent); font-size: 1.5rem;"></i>
+            <h4 class="mb-0">News Results for: <span style="color: var(--news-accent)">{{search_term[5:]}}</span></h4>
+          </div>
+          
+          <div class="category-tabs">
+            <button class="category-tab active">All News</button>
+            <button class="category-tab">Top Stories</button>
+            <button class="category-tab">Technology</button>
+            <button class="category-tab">Science</button>
+            <button class="category-tab">Business</button>
+            <button class="category-tab">Entertainment</button>
+            <button class="category-tab">Sports</button>
+            <button class="category-tab">Health</button>
+          </div>
+          
+          {% for i in resultsnews %}
+          <div class="card news-feed-item" style="animation-delay: {{loop.index * 0.1}}s">
+            <div class="card-header">
+              <i class="far fa-clock me-1"></i> {{i['date']}}
+              <span class="news-tag ms-auto">News</span>
+            </div>
+            <div class="card-body">
+              <a href="{{i['url']}}" class="card-title" target="_blank">
+                <i class="fas fa-external-link-alt me-1"></i> {{i['url']}}
+              </a>
+              <p class="card-text">{{i['body']}}</p>
+              
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-sm" style="color: var(--news-accent); background-color: rgba(0, 210, 255, 0.1);">
+                  <i class="fas fa-share-alt me-1"></i> Share
+                </button>
+                <button class="btn btn-sm ms-2" style="color: var(--accent-color); background-color: rgba(255, 41, 117, 0.1);">
+                  <i class="far fa-bookmark me-1"></i> Save
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+          <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-outline-light px-4">
+              <i class="fas fa-sync-alt me-2"></i> Load More News
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-{% endfor %}
-</div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Category tabs functionality
+      const tabs = document.querySelectorAll('.category-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('active'));
+          // Add active class to clicked tab
+          this.classList.add('active');
+        });
+      });
+      
+      // Focus search input when / is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          document.querySelector('.search-input').focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

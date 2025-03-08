@@ -1,77 +1,377 @@
-<style>
-     .form-control:focus {
-  border-color: #dc3545!important;
-  box-shadow: none!important;
-}
- .bg-dark-col {
-  background-color: #333 !important
-  }
-  body {
-  background-color: #393939 !important;
-  }
-  .navbar {
-  background-color: #393939 !important;
-  }
-.search-input {
-    height: 50px;
-    border-radius: 100px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #333!important;
-    color: white!important;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-  .navbar {
-display: flex;
-  }
-  .top-10 {
-  padding-top:20px!important;
-  }
-
-</style>
-<script src="https://cdn.jsdelivr.net/npm/minimasonry@1.3.2/build/minimasonry.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<nav class="navbar fixed-top  top-10 navbar-light text-light bg-dark-col px-4 shadow-sm">
-  <div class="container-fluid ">
-
-      <form class="d-flex ms-auto me-auto w-100" action="{{ url_for('home')}}" method="post">
-    <span class="navbar-brand">
-      <h2 href="" class="text-light"><svg fill="#ffffff" height="32px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-255.93, -255.93), scale(63.355)" fill="#dc3545" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="7.025452"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path> </g> </g> <g> <g> <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path> </g> </g> <g> <g> <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path> </g> </g> </g></svg>
-<strong class="text-danger">libre</strong>sail</h2></span>
-
-        <input type="text" id="search_term" class="form-control search-input" value="{{sr}}" name="search_term">
-
-            </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibreSail - Video Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #171717;
+      --card-color: #222222;
+      --accent-color: #ff2975;
+      --video-accent: #22c55e;
+      --text-color: #ffffff;
+      --secondary-text: #b3b3b3;
+    }
+    
+    body {
+      padding: 0;
+      background-color: var(--bg-color) !important;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .navbar {
+      background-color: var(--card-color) !important;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 15px rgba(255, 41, 117, 0.4) !important;
+    }
+    
+    .search-input {
+      height: 50px;
+      border-radius: 100px !important;
+      padding-left: 50px;
+      padding-right: 20px;
+      border: 2px solid var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color) !important;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:hover {
+      transform: scale(1.01);
+    }
+    
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .sail-text {
+      background: linear-gradient(to right, #3ad6fd, #c071fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .top-10 {
+      padding-top: 15px !important;
+    }
+    
+    /* Video card styles */
+    .video-card {
+      background-color: var(--card-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+    
+    .video-thumbnail img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .video-card:hover .video-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .video-duration {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background-color: rgba(255, 41, 117, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .video-card:hover .video-play-button {
+      opacity: 1;
+    }
+    
+    .video-play-button i {
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .video-info {
+      padding: 15px;
+    }
+    
+    .video-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+    }
+    
+    .video-source {
+      color: var(--video-accent);
+    }
+    
+    .video-description {
+      margin-top: 10px;
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    
+    /* Filter bar */
+    .filter-bar {
+      background-color: var(--card-color);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .filter-btn {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--secondary-text);
+      border: none;
+      border-radius: 20px;
+      padding: 6px 15px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--video-accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff4585;
+    }
+    
+    /* Highlight text */
+    ::selection {
+      background-color: var(--accent-color);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar fixed-top top-10 navbar-light text-light px-4">
+    <div class="container-fluid">
+      <form class="d-flex align-items-center w-100" action="{{ url_for('home') }}" method="post">
+        <a href="/" class="navbar-brand me-3">
+          <h2 class="text-light logo-text mb-0 d-flex align-items-center">
+            <svg fill="var(--accent-color)" height="32px" width="32px" class="me-2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path>
+                </g>
+              </g>
+            </svg>
+            <span style="color: var(--accent-color)">libre</span><span class="sail-text">sail</span>
+          </h2>
+        </a>
+        <div class="position-relative flex-grow-1">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search_term" class="form-control search-input" value="{{search_term}}" name="search_term" placeholder="Search for videos...">
+        </div>
+      </form>
     </div>
-  </form>
-
-  </div>
-</nav>
-<div class="py-4 px-4">
-  <div class="py-4"></div>
+  </nav>
+  
+  <div class="py-4 px-4">
     <div class="py-4"></div>
-
-{% for i in resultsvid %}
-<div class="card shadow-sm bg-dark-col mb-3 " style="max-width: 100%;">
-  <div class="card-header text-white ">{{i['title']}}  {{i['duration']}}</div>
-  <div class="card-body bg-dark-col text-secondary">
-      <img class="rounded" style="width:128px" src="{{i['images']['small']}}"/>
-    <a href="{{i['content']}}" class="card-title">{{i['content']}}</a>
-
-    <p class="card-text">{{i['body']}}</p>
+    <div class="py-4"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-video me-2" style="color: var(--video-accent); font-size: 1.5rem;"></i>
+            <h4 class="mb-0">Video Results for: <span style="color: var(--video-accent)">{{search_term[6:]}}</span></h4>
+          </div>
+          
+          <div class="filter-bar">
+            <button class="filter-btn active">All Videos</button>
+            <button class="filter-btn">Short (< 4 min)</button>
+            <button class="filter-btn">Medium (4-20 min)</button>
+            <button class="filter-btn">Long (> 20 min)</button>
+            <div class="ms-auto d-flex gap-2">
+              <button class="filter-btn"><i class="fas fa-sort me-1"></i> Sort by: Relevance</button>
+              <button class="filter-btn"><i class="fas fa-filter me-1"></i> Filter</button>
+            </div>
+          </div>
+          
+          <div class="row">
+            {% for i in resultsvid %}
+            <div class="col-md-6 col-lg-4">
+              <div class="video-card">
+                <div class="video-thumbnail">
+                  <img src="{{i['images']['small']}}" alt="{{i['title']}}">
+                  <div class="video-duration">{{i['duration']}}</div>
+                  <div class="video-play-button">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="video-info">
+                  <h5 class="video-title">{{i['title']}}</h5>
+                  <div class="video-meta">
+                    <span class="video-source">{{ i['content'].split('/')[2] }}</span>
+                    <span class="video-date">{{ i.get('date', 'Recent') }}</span>
+                  </div>
+                  <p class="video-description">{{i['body']}}</p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <a href="{{i['content']}}" target="_blank" class="btn btn-sm" style="color: var(--video-accent); background-color: rgba(34, 197, 94, 0.1);">
+                      <i class="fas fa-external-link-alt me-1"></i> Watch
+                    </a>
+                    <button class="btn btn-sm" style="color: var(--secondary-text); background-color: rgba(255, 255, 255, 0.1);">
+                      <i class="far fa-bookmark me-1"></i> Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          
+          <div class="d-flex justify-content-center mt-4 mb-5">
+            <button class="btn btn-outline-light px-4">
+              <i class="fas fa-plus me-2"></i> Load More Videos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-{% endfor %}
-</div>
-
-
-
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Filter buttons functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Find parent filter bar
+          const filterBar = this.closest('.filter-bar');
+          // Only update buttons within the same filter bar
+          const relatedBtns = filterBar.querySelectorAll('.filter-btn');
+          relatedBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+        });
+      });
+      
+      // Video cards hover effect
+      const videoCards = document.querySelectorAll('.video-card');
+      videoCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-5px)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+      
+      // Focus search input when / is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          document.querySelector('.search-input').focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,272 +1,518 @@
-<style>
-    .fart{
-        background-color: #5151513b!important;
-        border-radius: 10px;
-        padding:15px;
-        text-align: center;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibreSail - Image Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #171717;
+      --card-color: #222222;
+      --accent-color: #ff2975;
+      --img-accent: #8a2be2;
+      --text-color: #ffffff;
+      --secondary-text: #b3b3b3;
     }
-    a {
-    text-decoration: none!important;
-    color: white!important;
-
-}
-     .form-control:focus {
-  border-color: #dc3545!important;
-  box-shadow: none!important;
-}
-      .bg-dark-col {
-  background-color: #333 !important
-  }
-  body {
-  background-color: #393939 !important;
-  }
-  .navbar {
-  background-color: #393939 !important;
-  }
-  img.zoom {
-    width: 100%;
-    height: 200px;
-    border-radius:5px;
-    object-fit:cover;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-}
-  .page-top{
-            margin-top:85px;
-        }
-
-.search-input {
-    height: 50px;
-    border-radius: 100px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #333!important;
-    color: white!important;
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-  .navbar {
-display: flex;
-  }
-  .top-10 {
-  padding-top:20px!important;
-  }
-   #masonry {
-  column-count: 2;
-  column-gap: 1em;
-}
-
-@media(min-width: 30em) {
-  #masonry {
-    column-count: 3;
-    column-gap: 1em;
-  }
-}
-
-@media(min-width: 40em) {
-  #masonry {
-    column-count: 4;
-    column-gap: 1em;
-  }
-}
-
-@media(min-width: 60em) {
-  #masonry {
-    column-count: 5;
-    column-gap: 1em;
-  }
-}
-
-@media(min-width: 75em) {
-  #masonry {
-    column-count: 6;
-    column-gap: 1em;
-  }
-}
-
-.item {
-  background-color: none;
-  display: inline-block;
-  margin: 0 0 1em 0;
-  width: 100%;
-  cursor: pointer;
-}
-
-.item img {
-  max-width: 100%;
-  height: auto;
-  width: 100%;
-  margin-bottom: -4px;
-
-  /*idk why but this fix stuff*/
-}
-
-.item.active {
-  animation-name: active-in;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
-}
-
-.item.active:before {
-  content: "+";
-  transform: rotate(45deg);
-  font-size: 48px;
-  color: white;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color:rgba(0,0,0,0.85);
-  border-radius: 50%;
-  width:48px;
-  height:48px;
-  text-align:center;
-  line-height:48px;
-  z-index:12;
-}
-
-.item.active img {
-  animation-name: active-in-img;
-  animation-duration: 0.7s;
-  animation-fill-mode: forwards;
-  animation-direction: alternate;
-}
-
-
-@keyframes active-in {
-  0% {
-    opacity:1;
-    background-color:white;
-  }
-
-  50% {
-    opacity:0;
-    background-color:rgba(0,0,0,0.90);
-  }
-
-  100% {
-    opacity: 1;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color:rgba(0,0,0,0.90);
-  }
-}
-
-@keyframes active-in-img {
-  0% {
-    opacity:1;
-    transform:translate(0%, 0%);
-    top: 0;
-    left: 0;
-    max-width: 100%;
-  }
-  49% {
-    opacity:0;
-    transform: translate(0%, -50%);
-  }
-  50% {
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -100%);
-  }
-  100% {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  width: auto;
-  max-height: 95vh;
-  opacity:1;
-  }
-}
-
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<nav class="navbar fixed-top  top-10 navbar-light text-light bg-dark-col px-4 shadow-sm">
-  <div class="container-fluid ">
-
-      <form class="d-flex ms-auto me-auto w-100" action="{{ url_for('home')}}" method="post">
-    <span class="navbar-brand">
-      <h2 href="" class="text-light"><svg fill="#ffffff" height="32px" width="32px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)"><path transform="translate(-255.93, -255.93), scale(63.355)" fill="#dc3545" d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z" strokewidth="0"></path></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="7.025452"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path> </g> </g> <g> <g> <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path> </g> </g> <g> <g> <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path> </g> </g> </g></svg>
-<strong class="text-danger">libre</strong>sail</h2></span>
-
-        <input type="text" id="search_term" class="form-control search-input" value="{{sr}}" name="search_term">
-
-            </form>
-    </div>
-  </form>
-
-  </div>
-</nav>
-<div class="py-4 px-4">
-  <div class="py-4"></div>
-    <div class="py-4"></div>
-
-	<div id="#container1">
-  <div id="masonry">
-       {% for i in resultsimages %}
-    <div class="item fart">
-        <a href="{{i['image']}}">
-      <img loading="lazy" src="{{i['thumbnail']}}" class="" alt="{{i['image']}}" />
+    
+    body {
+      padding: 0;
+      background-color: var(--bg-color) !important;
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-color);
+    }
+    
+    .navbar {
+      background-color: var(--card-color) !important;
+      padding: 15px 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 0 15px rgba(255, 41, 117, 0.4) !important;
+    }
+    
+    .search-input {
+      height: 50px;
+      border-radius: 100px !important;
+      padding-left: 50px;
+      padding-right: 20px;
+      border: 2px solid var(--accent-color);
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: var(--text-color) !important;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:hover {
+      transform: scale(1.01);
+    }
+    
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      color: var(--accent-color);
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .sail-text {
+      background: linear-gradient(to right, #3ad6fd, #c071fe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .page-top {
+      margin-top: 85px;
+    }
+    
+    .top-10 {
+      padding-top: 15px !important;
+    }
+    
+    /* Image gallery styles */
+    #masonry {
+      column-count: 2;
+      column-gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+    
+    @media(min-width: 576px) {
+      #masonry {
+        column-count: 3;
+      }
+    }
+    
+    @media(min-width: 768px) {
+      #masonry {
+        column-count: 4;
+      }
+    }
+    
+    @media(min-width: 992px) {
+      #masonry {
+        column-count: 5;
+      }
+    }
+    
+    .item {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 15px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: rgba(81, 81, 81, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .item img {
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      display: block;
+      transition: all 0.3s ease;
+      filter: brightness(0.9);
+    }
+    
+    .item:hover img {
+      filter: brightness(1.1);
+    }
+    
+    .item-content {
+      padding: 15px;
+      text-align: center;
+    }
+    
+    .item a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      display: block;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .item a:hover {
+      color: var(--accent-color);
+    }
+    
+    /* Image overlay */
+    .item .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 50px);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(138, 43, 226, 0.7));
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+    
+    .item:hover .overlay {
+      opacity: 1;
+    }
+    
+    .overlay-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .overlay-btn {
+      background-color: var(--card-color);
+      color: var(--text-color);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.9;
+    }
+    
+    .overlay-btn:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      background-color: var(--accent-color);
+    }
+    
+    /* Image modal */
+    .modal-content {
+      background-color: var(--bg-color);
+      border: none;
+      border-radius: 16px;
+    }
+    
+    .modal-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .modal-title {
+      color: var(--text-color);
+    }
+    
+    .modal-body {
+      padding: 0;
+    }
+    
+    .modal-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Filter controls */
+    .filter-controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      background-color: var(--card-color);
+      color: var(--secondary-text);
+      border: none;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: linear-gradient(90deg, var(--accent-color), var(--img-accent));
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff4585;
+    }
+    
+    /* Highlight text */
+    ::selection {
+      background-color: var(--accent-color);
+      color: white;
+    }
+    
+    /* Loading animation */
+    .loader {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    
+    .loader-dot {
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    
+    .loader-dot:nth-child(2) {
+      animation-delay: 0.3s;
+      background-color: #8a2be2;
+    }
+    
+    .loader-dot:nth-child(3) {
+      animation-delay: 0.6s;
+      background-color: #00d2ff;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar fixed-top top-10 navbar-light text-light px-4">
+    <div class="container-fluid">
+      <form class="d-flex align-items-center w-100" action="{{ url_for('home') }}" method="post">
+        <a href="/" class="navbar-brand me-3">
+          <h2 class="text-light logo-text mb-0 d-flex align-items-center">
+            <svg fill="var(--accent-color)" height="32px" width="32px" class="me-2" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-255.93 -255.93 1013.68 1013.68" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M447.017,329.476c-9.6-7.467-22.4-5.333-29.867,3.2l-9.6,10.667c-14.933,18.133-35.2,19.2-71.467,18.133 c-6.4,0-12.8,0-19.2,0h-131.2c-6.4,0-12.8,0-19.2,0c-35.2,1.067-56.533,0-71.467-18.133l-9.6-10.667 c-7.467-9.6-21.333-10.667-29.867-3.2c-9.6,7.467-10.667,21.333-3.2,29.867l9.599,10.667c24.533,28.8,57.6,33.067,88.533,33.067 c5.333,0,10.667,0,16,0c6.4,0,11.733,0,18.133,0h132.267c6.4,0,12.8,0,18.133,0c36.267,1.067,76.8,2.133,105.6-33.067l9.6-10.667 C457.684,349.743,455.551,336.943,447.017,329.476z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M385.151,298.543c-6.4-28.8-53.333-234.667-199.467-296.533c-6.4-2.133-13.867-2.133-19.2,2.133 c-6.4,3.2-9.6,9.6-9.6,17.067v282.666c0,11.733,9.6,21.333,21.333,21.333h187.733c11.733,0,20.267-8.533,20.267-19.2 C386.218,302.81,386.218,300.676,385.151,298.543z M199.551,283.61V55.343c85.333,55.467,125.867,176,139.733,228.267H199.551z"></path>
+                </g>
+              </g>
+              <g>
+                <g>
+                  <path d="M490.751,457.476l-35.2-19.2c-29.867-16-64-16-92.8,0l-7.467,4.267c-16,8.533-36.267,8.533-52.267,0l-7.467-4.267 c-29.867-16-64-16-92.8,0c-16,8.533-36.267,8.533-52.267,0l-4.267-2.133c-29.867-16-66.133-16-96,2.133L10.75,462.809 c-10.667,6.4-13.867,19.2-7.467,28.8c4.267,6.4,10.667,9.6,18.133,9.6c3.2,0,7.467-1.067,10.667-2.133l39.467-24.533 c17.067-10.667,37.333-10.667,54.4-2.133l4.267,2.133c29.867,16,64,16,92.8,0c16-8.533,36.267-8.533,52.267,0l8.533,4.267 c29.867,16,64,16,92.8,0l7.467-4.267c16-8.533,36.267-8.533,52.267,0l34.133,20.267c10.667,5.333,23.467,2.133,28.8-8.533 C504.618,475.61,501.417,462.809,490.751,457.476z"></path>
+                </g>
+              </g>
+            </svg>
+            <span style="color: var(--accent-color)">libre</span><span class="sail-text">sail</span>
+          </h2>
         </a>
-<div class="py-3"></div>
-        <a href="{{i['url']}}">{{i['title']}}</a>
+        <div class="position-relative flex-grow-1">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search_term" class="form-control search-input" value="{{search_term}}" name="search_term" placeholder="Search for images...">
+        </div>
+      </form>
     </div>
-
-
- {% endfor %}
-<script>
-var $container = $('#container1');
-
-$container.imagesLoaded(function(){
-  $container.masonry({
-    itemSelector: '.item',
-    columnWidth: 100
-  });
-});
-
-$container.infinitescroll({
-  navSelector  : '#page-nav',    // selector for the paged navigation
-  nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
-  itemSelector : '.item',     // selector for all items you'll retrieve
-  loading: {
-      finishedMsg: 'No more pages to load.',
-      img: 'http://i.imgur.com/6RMhx.gif'
-    }
-  },
-  // trigger Masonry as a callback
-  function( newElements ) {
-    // hide new items while they are loading
-    var $newElems = $( newElements ).css({ opacity: 0 });
-    // ensure that images load before adding to masonry layout
-    $newElems.imagesLoaded(function(){
-      // show elems now they're ready
-      $newElems.animate({ opacity: 1 });
-      $container.masonry( 'appended', $newElems, true );
+  </nav>
+  
+  <div class="py-4 px-4">
+    <div class="py-4"></div>
+    <div class="py-4"></div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center mb-4">
+            <i class="fas fa-images me-2" style="color: var(--img-accent); font-size: 1.5rem;"></i>
+            <h4 class="mb-0">Image Results for: <span style="color: var(--img-accent)">{{search_term[6:]}}</span></h4>
+          </div>
+          
+          <div class="filter-controls">
+            <button class="filter-btn active">All Images</button>
+            <button class="filter-btn">Photos</button>
+            <button class="filter-btn">Illustrations</button>
+            <button class="filter-btn">Vector</button>
+            <button class="filter-btn">GIF</button>
+            <div class="ms-auto d-flex gap-2">
+              <button class="filter-btn"><i class="fas fa-sliders-h me-1"></i> Filters</button>
+              <button class="filter-btn"><i class="fas fa-sort me-1"></i> Sort</button>
+            </div>
+          </div>
+          
+          <div id="masonry">
+            {% for i in resultsimages %}
+            <div class="item">
+              <div class="overlay">
+                <div class="overlay-buttons">
+                  <button class="overlay-btn view-btn" data-url="{{i['image']}}" data-title="{{i['title']}}">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="overlay-btn download-btn" data-url="{{i['image']}}">
+                    <i class="fas fa-download"></i>
+                  </button>
+                  <button class="overlay-btn">
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+              </div>
+              <img loading="lazy" src="{{i['thumbnail']}}" alt="{{i['title']}}" />
+              <div class="item-content">
+                <a href="{{i['url']}}" target="_blank" title="{{i['title']}}">{{i['title']}}</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          
+          <div class="loader" id="load-more">
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+            <div class="loader-dot"></div>
+          </div>
+          
+          <div class="d-flex justify-content-center mt-4 mb-5">
+            <button class="btn btn-outline-light px-4" id="load-more-btn">
+              <i class="fas fa-plus me-2"></i> Load More Images
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Image Modal -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-0">
+          <img src="" id="modalImage" class="img-fluid" alt="Full size image">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" id="modalDownload">
+            <i class="fas fa-download me-2"></i> Download
+          </button>
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Filter buttons functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          this.classList.add('active');
+        });
+      });
+      
+      // Image modal functionality
+      const viewBtns = document.querySelectorAll('.view-btn');
+      const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDownload = document.getElementById('modalDownload');
+      
+      viewBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const imageUrl = this.getAttribute('data-url');
+          const imageTitle = this.getAttribute('data-title');
+          
+          modalImage.src = imageUrl;
+          modalTitle.textContent = imageTitle;
+          modalDownload.setAttribute('data-url', imageUrl);
+          
+          imageModal.show();
+        });
+      });
+      
+      // Download functionality
+      const downloadBtns = document.querySelectorAll('.download-btn');
+      downloadBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const imageUrl = this.getAttribute('data-url');
+          // Create temporary link and trigger download
+          const link = document.createElement('a');
+          link.href = imageUrl;
+          link.download = 'image.jpg';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      });
+      
+      modalDownload.addEventListener('click', function() {
+        const imageUrl = this.getAttribute('data-url');
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = 'image.jpg';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+      
+      // Load more functionality
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      const loader = document.getElementById('load-more');
+      
+      loadMoreBtn.addEventListener('click', function() {
+        this.style.display = 'none';
+        loader.style.display = 'flex';
+        
+        // Simulate loading (in a real app, you'd fetch more images)
+        setTimeout(() => {
+          loader.style.display = 'none';
+          loadMoreBtn.style.display = 'block';
+        }, 2000);
+      });
+      
+      // Focus search input when / is pressed
+      document.addEventListener('keydown', function(e) {
+        if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          document.querySelector('.search-input').focus();
+        }
+      });
     });
-  }
-);
-</script>
-    </div>
-
-        <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li ><a class="page-link" href="#">Previous</a></li>
-    <li ><a class="page-link" hrefid="#page-nav" >Next</a></li>
-  </ul>
-</nav>
+  </script>
+</body>
+</html>
