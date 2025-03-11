@@ -1,12 +1,12 @@
-# Use the official Python 3.8 slim image as the base image
+# Use the official Python 3.11 slim image as the base image
  FROM python:3.11-slim
 
  # Set the working directory within the container
  WORKDIR /libresail
 
  # Copy the necessary files and directories into the container
- COPY resources/ templates/ .venv main.py requirements.txt /libresail/
- COPY .venv application.py requirements.txt  /libresail/
+ COPY templates /libresail/templates
+ COPY main.py requirements.txt  /libresail/
 
  # Upgrade pip and install Python dependencies
  RUN pip3 install --upgrade pip && pip install --no-cache-dir -r requirements.txt
