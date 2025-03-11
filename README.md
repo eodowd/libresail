@@ -19,7 +19,7 @@ view app by visiting in browser: `http://127.0.0.1:5000`
 ## How to use (docker)
 clone the docker branch repo
 
-- run: `docker compose up -d`
+- run: `docker-compose up -d`
 - view app by visiting in browser: `http://127.0.0.1:5000`
 
 ## Screenshots
