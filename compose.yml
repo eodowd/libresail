@@ -1,0 +1,12 @@
+services:
+  libresail:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: libresail
+    image: eodowd/libresail:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    restart: unless-stopped
