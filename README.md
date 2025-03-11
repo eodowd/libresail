@@ -8,7 +8,7 @@ MIT License
 https://eoinodowd.pythonanywhere.com/
 
 ## how to use (dev)
-clone this repo
+clone the main branch repo
 
 install requirements with: `pip install -r requirements.txt`
 
@@ -17,6 +17,8 @@ run dev server with: `flask --app main run`
 view app by visiting in browser: `http://127.0.0.1:5000`
 
 ## How to use (docker)
+clone the docker branch repo
+
 - run: `docker compose up -d`
 - view app by visiting in browser: `http://127.0.0.1:5000`
 
